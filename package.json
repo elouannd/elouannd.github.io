@@ -2,7 +2,7 @@
   "name": "elouannd.github.io",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://elouanndomenech.github.io/elouannd.github.io",
+  "homepage": "https://elouanndomenech.github.io",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
