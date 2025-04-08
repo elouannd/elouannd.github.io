@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/elouannd.github.io/static/css/main.2fc3bb09.css",
-    "main.js": "/elouannd.github.io/static/js/main.3227d2b9.js",
+    "main.css": "/elouannd.github.io/static/css/main.8c9261b6.css",
+    "main.js": "/elouannd.github.io/static/js/main.24622c5a.js",
     "static/js/453.bcb93517.chunk.js": "/elouannd.github.io/static/js/453.bcb93517.chunk.js",
     "index.html": "/elouannd.github.io/index.html",
-    "main.2fc3bb09.css.map": "/elouannd.github.io/static/css/main.2fc3bb09.css.map",
-    "main.3227d2b9.js.map": "/elouannd.github.io/static/js/main.3227d2b9.js.map",
+    "main.8c9261b6.css.map": "/elouannd.github.io/static/css/main.8c9261b6.css.map",
+    "main.24622c5a.js.map": "/elouannd.github.io/static/js/main.24622c5a.js.map",
     "453.bcb93517.chunk.js.map": "/elouannd.github.io/static/js/453.bcb93517.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2fc3bb09.css",
-    "static/js/main.3227d2b9.js"
+    "static/css/main.8c9261b6.css",
+    "static/js/main.24622c5a.js"
   ]
 }
