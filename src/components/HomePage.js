@@ -21,10 +21,14 @@ function HomePage() {
         
         <div className="welcome">
           {isDevelopment 
-            ? "Bienvenue sur mon portfolio. Choisissez une section."
-            : "Bienvenue sur mon portfolio. Site en maintenance."}
+            ? ""
+            : ""}
         </div>
       </div>
+      {/* Ajout du bandeau de contact en bas */}
+      <footer className="contact-banner">
+        <p>Contact: <a href="mailto:domenech@elouann.me">domenech@elouann.me</a></p>
+      </footer>
     </div>
   );
 }

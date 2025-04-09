@@ -1,0 +1,135 @@
+.plugins-page {
+  padding: 2rem;
+  /* Ajoutez d'autres styles généraux pour la page si nécessaire */
+}
+
+.plugins-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Cartes légèrement plus larges */
+  gap: 2rem; /* Plus d'espace */
+  margin-top: 1rem; /* Réduit un peu l'espace car le bandeau en ajoute */
+}
+
+.plugin-card {
+  background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Fond en dégradé subtil */
+  border-radius: 12px; /* Coins plus arrondis */
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 5px 5px 15px #bebebe, /* Ombre plus prononcée */
+             -5px -5px 15px #ffffff;
+  transition: all 0.3s ease-in-out; /* Transition plus douce */
+  border: none; /* Suppression de la bordure précédente */
+}
+
+.plugin-card:hover {
+  transform: translateY(-8px) scale(1.02); /* Effet de lévitation plus marqué */
+  box-shadow: 8px 8px 20px #b0b0b0,
+             -8px -8px 20px #ffffff;
+}
+
+.plugin-logo {
+  width: 100%; /* Prend toute la largeur de la carte */
+  aspect-ratio: 16 / 9; /* Définit le ratio 16:9 */
+  object-fit: cover; /* Redimensionne l'image pour couvrir la zone, peut rogner */
+  margin-bottom: 1rem;
+  background-color: #eee; /* Garde un fond pour les images transparentes */
+  border-radius: 8px; /* Coins légèrement arrondis pour le thumbnail */
+}
+
+.plugin-name {
+  font-size: 1.4rem; /* Plus grand */
+  margin-bottom: 0.2rem;
+  font-weight: 600; /* Un peu moins gras que 'bold' */
+  color: #333;
+}
+
+.plugin-version {
+  font-size: 0.9rem;
+  color: #666; /* Couleur plus douce */
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.plugin-description { /* Style pour la nouvelle description */
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    min-height: 40px; /* Hauteur minimale pour alignement */
+}
+
+.plugin-meta { /* Conteneur pour OS et Formats */
+    display: flex;
+    justify-content: space-between; /* Espace entre OS et Formats */
+    align-items: center;
+    width: 80%; /* Limite la largeur pour centrer */
+    margin-bottom: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd; /* Séparateur léger */
+}
+
+.plugin-os-icons { /* Style pour le conteneur des icônes OS */
+  display: flex;
+  gap: 0.8rem; /* Espace entre les icônes OS */
+  font-size: 1.5rem; /* Taille des icônes */
+  color: #444; /* Couleur des icônes */
+}
+
+.plugin-os-icons svg:hover { /* Effet au survol des icônes */
+    color: #007bff;
+    transform: scale(1.1);
+}
+
+.plugin-formats {
+  font-size: 0.8rem;
+  color: #777;
+  font-weight: 500;
+  background-color: #eee; /* Petit fond pour les formats */
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.download-button {
+  display: inline-block;
+  padding: 0.9rem 2rem; /* Plus grand padding */
+  background-image: linear-gradient(to right, #007bff, #0056b3); /* Dégradé pour le bouton */
+  color: white;
+  text-decoration: none;
+  border-radius: 25px; /* Bouton plus arrondi */
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Ombre colorée */
+}
+
+.download-button:hover {
+  background-image: linear-gradient(to right, #0056b3, #003d80); /* Dégradé inversé au survol */
+  transform: scale(1.05); /* Légèrement plus grand au survol */
+  box-shadow: 0 6px 12px rgba(0, 86, 179, 0.4);
+}
+
+/* Style pour le bouton retour (si vous utilisez les mêmes classes que la page d'accueil) */
+.back-button {
+  margin-bottom: 1.5rem;
+  /* Ajoutez les styles spécifiques du bouton retour ici si nécessaire */
+}
+
+/* Style pour le bandeau d'information général */
+.info-banner {
+  padding: 0.8rem 1rem;
+  margin-top: 1.5rem; /* Espace au-dessus */
+  margin-bottom: 1.5rem; /* Espace en dessous */
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* Style spécifique pour le bandeau AAX */
+.aax-notice {
+  background-color: #fff3cd; /* Jaune pâle */
+  color: #856404; /* Texte brun foncé */
+  border: 1px solid #ffeeba; /* Bordure assortie */
+}
