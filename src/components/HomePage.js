@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css'; // Importer les styles globaux
+import RotatingText from './RotatingText';
 
 function HomePage() {
   // Déterminer si on est en développement
@@ -20,9 +21,14 @@ function HomePage() {
         )}
         
         <div className="welcome">
-          {isDevelopment 
-            ? ""
-            : ""}
+          <RotatingText
+            messages={[
+              'Bienvenue sur mon site !',
+              'Découvrez mes plugins audio',
+              'Explorez mes applications',
+              'Contactez-moi pour collaborer'
+            ]}
+          />
         </div>
       </div>
       {/* Ajout du bandeau de contact en bas */}
