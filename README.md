@@ -1,91 +1,145 @@
 # Elouann's Personal Website
 
-This project is Elouann's personal website, showcasing plugins, apps, and other creations.
+Modern glassmorphism portfolio built with Vite + React, with an "unlinked pages" system so you can drop raw HTML files that are accessible without being linked in the navigation.
 
-## Development
+## Tech Stack
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Build tool: Vite
+- Framework: React 19
+- Router: React Router v7
+- Styling: CSS with glassmorphism & design tokens
+- Deployment: GitHub Pages (gh-pages branch via `gh-pages` npm package)
+- Custom domain: `elouann.me` (via `public/CNAME`)
 
-### Prerequisites
+## Local Development
 
-- Node.js (v16 or later recommended)
-- npm (comes with Node.js)
+Prerequisites:
+- Node.js v16+ and npm
 
-### Running the Project
-
-1.  **Clone the repository:**
-    ```bash
-    git clone <repository-url>
-    cd <repository-directory>
-    ```
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-3.  **Start the development server:**
-    ```bash
-    npm start
-    ```
-    This runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make changes. You may also see any lint errors in the console.
-
-### Building for Production
+Install and run:
 
 ```bash
-npm run build
+git clone https://github.com/elouannd/elouannd.github.io
+cd elouannd.github.io
+npm install
+npm run dev
 ```
-This builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include hashes. Your app is ready to be deployed.
 
-See the Create React App section on [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Vite dev server: http://localhost:5173
 
-## Key Features
+## Scripts
 
-- **Homepage:** Displays a welcome message and main title.
-    - The main navigation links (Plugins, Apps, Autre, Contact) are currently configured to be visible only during development (`process.env.NODE_ENV === 'development'`).
-- **Plugins Page:** Showcases various audio plugins with descriptions, OS compatibility, formats, and download links.
-- **Other Sections:** (Describe Apps, Autre, Contact pages briefly once their content is known or implemented)
+- `npm run dev` - Start Vite dev server
+- `npm run build` - Production build to `dist/`
+- `npm run preview` - Preview the prod build locally
+- `npm run deploy` - Build and publish `dist/` to `gh-pages` branch
 
-## Available Scripts
+Notes:
+- Postbuild copies `dist/index.html` to `dist/404.html` for SPA route-refresh on GitHub Pages
+- `public/CNAME` is included so GitHub Pages serves the site at `https://elouann.me` in addition to `https://elouannd.github.io`
 
-In the project directory, you can run:
+## Project Structure
 
-- `npm start`: Runs the app in development mode.
-- `npm test`: Launches the test runner in interactive watch mode.
-- `npm run build`: Builds the app for production.
-- `npm run eject`: **Note: this is a one-way operation.** Removes the single build dependency and copies configuration files and transitive dependencies into your project for full control. Use this only if you are not satisfied with the default build tool and configuration choices.
+```
+elouannd.github.io/
+├─ public/
+│  ├─ CNAME                 # custom domain
+│  └─ unlinked/             # standalone HTML pages (see below)
+├─ src/
+│  ├─ components/
+│  │  ├─ NotFound.jsx
+│  │  └─ UnlinkedPage.jsx   # renders /u/:slug using DOMPurify
+│  ├─ App.css
+│  ├─ App.jsx               # routes and layout
+│  ├─ index.css             # global styles + design tokens
+│  └─ main.jsx              # React entry
+├─ index.html               # Vite HTML entry
+└─ vite.config.js
+```
 
-## Learn More
+## Unlinked Pages System
 
-- To learn React, check out the [React documentation](https://reactjs.org/).
-- For more information about Create React App, see the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can add pages that are not linked in the navigation and are easy to share.
 
-## Testing Mobile Responsiveness
+Create a page:
+- Add a file at `public/unlinked/your-slug.html`
 
-After making changes to CSS or layout, it's important to test how the application looks and behaves on different screen sizes. Here's how you can do this using most modern web browsers:
+Access it in two ways:
+- SPA route (sanitized via DOMPurify): `/u/your-slug`
+- Static file directly: `/unlinked/your-slug.html`
 
-1.  **Open your browser's Developer Tools:**
-    *   Right-click on the page and select "Inspect" or "Inspect Element".
-    *   Alternatively, use keyboard shortcuts:
-        *   `Cmd + Opt + I` (Mac)
-        *   `Ctrl + Shift + I` (Windows/Linux)
+Example included:
+- `public/unlinked/example.html` &rarr; `/u/example`
 
-2.  **Toggle Device Toolbar:**
-    *   In the Developer Tools panel, look for an icon that looks like a phone and tablet, or text like "Toggle device toolbar". Click it.
-    *   Keyboard shortcut: `Cmd + Shift + M` (Mac) or `Ctrl + Shift + M` (Windows/Linux).
+The SPA renderer is implemented in `src/components/UnlinkedPage.jsx` and uses DOMPurify with a safe HTML profile before injecting content.
 
-3.  **Select Different Devices or Screen Sizes:**
-    *   The device toolbar allows you to select from a list of predefined devices (e.g., iPhone, iPad, Android devices) to simulate their screen sizes and resolutions.
-    *   You can also choose "Responsive" and manually drag the edges of the viewport to see how the layout changes at various widths and heights.
+## Routes
 
-4.  **What to Check:**
-    *   **Layout:** Ensure elements don't overlap, content isn't cut off, and the layout adapts logically to the screen size (e.g., multi-column layouts becoming single-column).
-    *   **Readability:** Check that text is legible, font sizes are appropriate, and there's enough contrast.
-    *   **Tap Targets:** Make sure buttons, links, and other interactive elements are large enough to be easily tapped on a touch screen.
-    *   **Navigation:** Verify that navigation menus are usable (e.g., a hamburger menu might appear on smaller screens).
-    *   **Images and Media:** Confirm that images scale correctly and don't break the layout.
+- `/` - Homepage (glassmorphism)
+- `/u/:slug` - Unlinked page renderer
+- Dev-only helpers (visible when `import.meta.env.DEV`):
+  - `/plugins`, `/apps`, `/autre`, `/contact`
+- Catch-all `*` &rarr; NotFound
 
-5.  **Test on Key Pages:**
-    *   **Homepage:** Check the main title, navigation (if visible), and footer.
-    *   **Plugins Page:** Verify the plugin grid, card layout, text within cards, and download buttons.
-    *   (Test other pages like Apps, Autre, Contact as they are developed).
+## Design System (Glassmorphism)
 
-By following these steps, you can identify and fix responsiveness issues to ensure a good user experience across a wide range of devices.
+Defined via CSS custom properties in `src/index.css`:
+- Gradient ambient background using `--accent-1` / `--accent-2`
+- Glass cards: `--glass-bg`, `--glass-border`, `--blur`, `--radius`
+- Dark-first with light-mode adjustments via `prefers-color-scheme: light`
+- Inter font is loaded in `index.html` for clean, modern type
+
+Example tokens (see file for full list):
+
+```css
+:root {
+  --bg-1: #0b0b0f;
+  --bg-2: #0f1116;
+  --accent-1: #5b7cff;
+  --accent-2: #ff6ec7;
+
+  --text: #e8eaed;
+  --muted: #aeb4be;
+
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --blur: 12px;
+  --radius: 14px;
+}
+```
+
+## Deployment (GitHub Pages)
+
+The site is published from the `gh-pages` branch using the `gh-pages` npm package.
+
+Deploy:
+
+```bash
+npm run deploy
+```
+
+What it does:
+1) `npm run build` creates `dist/`
+2) Copies `dist/index.html` to `dist/404.html` (SPA fallback)
+3) Copies `public/CNAME` to `dist/CNAME` if present
+4) Publishes `dist` to the `gh-pages` branch
+
+Make sure your repository settings are:
+- Pages Source: `gh-pages` branch
+- Custom domain: `elouann.me`
+
+Live URLs (after Pages updates/DNS propagation):
+- https://elouannd.github.io
+- https://elouann.me
+
+## Contributing Workflow
+
+1. Create a branch from `main`
+2. Implement changes, verify with `npm run dev`
+3. Build and preview: `npm run build && npm run preview`
+4. Commit + push and open a PR to `main`
+5. After merge, run `npm run deploy` (or use Actions if you add CI)
+
+## License
+
+Private repository — all rights reserved.

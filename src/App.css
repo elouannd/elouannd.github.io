@@ -166,3 +166,66 @@ nav {
     padding: 10px;
   }
 }
+
+/* === Glassmorphism layout additions === */
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: 75vh;
+  padding: 40px 0;
+}
+
+.home-card {
+  text-align: center;
+  padding: 48px 28px;
+}
+
+/* Grid for nav buttons on the hero */
+.nav-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  margin-top: 18px;
+}
+
+/* Glass button variant */
+.nav-button.btn-glass {
+  border-radius: 10px;
+  border: var(--ring, 1px solid rgba(255,255,255,0.2));
+  background: var(--glass-bg, rgba(255,255,255,0.08));
+  backdrop-filter: blur(var(--blur, 12px)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--blur, 12px)) saturate(140%);
+  color: inherit;
+  padding: 12px 20px;
+  transition: transform .18s ease, background .2s ease, box-shadow .2s ease;
+  box-shadow: var(--glass-shadow, 0 10px 30px rgba(0,0,0,.35)), inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+.nav-button.btn-glass:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Footer contact banner */
+.contact-banner {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  width: min(920px, 92vw);
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: var(--ring, 1px solid rgba(255,255,255,0.18));
+  background: var(--glass-bg, rgba(255,255,255,0.08));
+  backdrop-filter: blur(var(--blur, 12px)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--blur, 12px)) saturate(140%);
+  box-shadow: var(--glass-shadow, 0 10px 30px rgba(0,0,0,.35));
+}
+
+.contact-banner p {
+  margin: 0;
+  color: var(--muted, #aeb4be);
+  font-size: 0.95rem;
+}
