@@ -4,10 +4,11 @@ Modern glassmorphism portfolio built with Vite + React, with an "unlinked pages"
 
 ## Tech Stack
 
-- Build tool: Vite
+- Build tool: Vite 7.1 (migrated from Create React App)
 - Framework: React 19
 - Router: React Router v7
 - Styling: CSS with glassmorphism & design tokens
+- Testing: React Testing Library & Jest (configuration needs updating for Vite compatibility)
 - Deployment: GitHub Pages (gh-pages branch via `gh-pages` npm package)
 - Custom domain: `elouann.me` (via `public/CNAME`)
 
@@ -19,7 +20,7 @@ Prerequisites:
 Install and run:
 
 ```bash
-git clone https://github.com/elouannd/elouannd.github.io
+git clone https://github.com/elouannd/elouannd.github.io.git
 cd elouannd.github.io
 npm install
 npm run dev
@@ -27,16 +28,23 @@ npm run dev
 
 Vite dev server: http://localhost:5173
 
+### Development vs Production
+- **Development**: Navigation links (`/plugins`, `/apps`, `/autre`, `/contact`) are visible only in dev mode
+- **Production**: Only the homepage (`/`) and unlinked pages (`/u/:slug`) are accessible
+
 ## Scripts
 
-- `npm run dev` - Start Vite dev server
-- `npm run build` - Production build to `dist/`
+- `npm run dev` - Start Vite dev server (development)
+- `npm start` - Alternative development server (using react-scripts)
+- `npm run build` - Production build to `dist/` (using Vite)
 - `npm run preview` - Preview the prod build locally
+- `npm test` - Run tests with Jest (*Note: Currently has compatibility issues with Vite's import.meta*)
 - `npm run deploy` - Build and publish `dist/` to `gh-pages` branch
 
 Notes:
-- Postbuild copies `dist/index.html` to `dist/404.html` for SPA route-refresh on GitHub Pages
+- Postbuild script copies `dist/index.html` to `dist/404.html` for SPA route-refresh on GitHub Pages
 - `public/CNAME` is included so GitHub Pages serves the site at `https://elouann.me` in addition to `https://elouannd.github.io`
+- The project is transitioning from Create React App to Vite, some test configurations may need updates
 
 ## Project Structure
 
@@ -139,6 +147,12 @@ Live URLs (after Pages updates/DNS propagation):
 3. Build and preview: `npm run build && npm run preview`
 4. Commit + push and open a PR to `main`
 5. After merge, run `npm run deploy` (or use Actions if you add CI)
+
+## Known Issues
+
+- Jest tests currently fail due to `import.meta` compatibility issues between react-scripts and Vite
+- The project is in transition from Create React App to Vite, some configurations may need updates
+- Consider migrating to Vitest for better Vite integration
 
 ## License
 
