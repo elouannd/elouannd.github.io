@@ -1,0 +1,107 @@
+/* Language Toggle Component - Analog Glass Aesthetic */
+.language-toggle {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm, 12px);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur, 20px)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--blur, 20px)) saturate(150%);
+  box-shadow: var(--btn-shadow-raised);
+  cursor: pointer;
+  transition: all 0.3s var(--transition-smooth, cubic-bezier(0.4, 0, 0.2, 1));
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle gradient overlay on hover */
+.language-toggle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center,
+    color-mix(in oklab, var(--primary) 15%, transparent),
+    transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.language-toggle:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in oklab, var(--primary) 30%, transparent);
+  box-shadow:
+    0 4px 8px rgba(44, 52, 40, 0.12),
+    0 6px 16px rgba(224, 122, 63, 0.08),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.03),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] .language-toggle:hover {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    0 6px 16px rgba(217, 117, 66, 0.15),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+.language-toggle:hover::before {
+  opacity: 1;
+}
+
+.language-toggle:active {
+  transform: translateY(0);
+  box-shadow: var(--btn-shadow-pressed);
+  transition: all 0.1s ease;
+}
+
+.lang-option {
+  transition: all 0.25s var(--transition-smooth, cubic-bezier(0.4, 0, 0.2, 1));
+  letter-spacing: 0.03em;
+  position: relative;
+  z-index: 1;
+}
+
+.lang-option.active {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-shadow: 0 0 12px color-mix(in oklab, var(--primary) 40%, transparent);
+}
+
+.divider {
+  color: var(--text-muted);
+  opacity: 0.4;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .language-toggle {
+    top: 16px;
+    left: 16px;
+    padding: 8px 14px;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .language-toggle {
+    top: 12px;
+    left: 12px;
+    padding: 7px 12px;
+    font-size: 0.8rem;
+  }
+}
+

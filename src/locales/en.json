@@ -1,0 +1,67 @@
+{
+  "common": {
+    "backToHome": "Back to Home",
+    "loading": "Loading…",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Elouann",
+    "contactBanner": "Contact: {{email}}"
+  },
+  "nav": {
+    "plugins": "PLUGINS",
+    "apps": "APPS",
+    "other": "OTHER",
+    "contact": "CONTACT"
+  },
+  "plugins": {
+    "title": "Discover My Plugins",
+    "aaxNotice": "AAX format plugins are not yet available.",
+    "version": "v{{version}}",
+    "download": "Download",
+    "os": {
+      "mac": "macOS",
+      "win": "Windows"
+    },
+    "items": {
+      "ryanGosling": {
+        "description": "A simple reverb with the looks of handsome Ryan"
+      },
+      "elouReverb": {
+        "description": "A cheap and simple reverb"
+      }
+    }
+  },
+  "apps": {
+    "title": "My Applications",
+    "empty": "Applications will be added here"
+  },
+  "other": {
+    "title": "Other Projects",
+    "empty": "Content will be added here"
+  },
+  "contact": {
+    "title": "Contact",
+    "empty": "The contact form will be added here"
+  },
+  "unlinked": {
+    "loading": "Loading…",
+    "notFound": {
+      "title": "Page not found",
+      "message": "No page found for \"{{slug}}\"."
+    },
+    "error": {
+      "title": "Loading error",
+      "message": "Unable to load this page."
+    }
+  },
+  "notFound": {
+    "title": "404 — Page not found",
+    "message": "The requested page could not be found."
+  },
+  "language": {
+    "fr": "Français",
+    "en": "English",
+    "toggle": "Change language"
+  }
+}

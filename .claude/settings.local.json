@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install framer-motion)",
+      "Bash(npm run dev)",
+      "Bash(git add package.json package-lock.json src/ CLAUDE.md LOCALIZATION.md .claude/)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,245 @@
+/* ==========================================
+   HOME PAGE - ANALOG GLASSMORPHIC DESIGN
+   ========================================== */
+
+.homepage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+.homepage-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  /* Slight organic offset - not perfectly centered */
+  transform: translateY(-3vh);
+}
+
+/* Main card styling */
+.homepage .home-card {
+  text-align: center;
+  padding: 56px 48px;
+  position: relative;
+  /* Subtle natural variance in positioning */
+  transform: translateX(1px) translateY(-1px);
+}
+
+.homepage .home-card::before {
+  content: '';
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(circle at center,
+    color-mix(in oklab, var(--primary) 8%, transparent),
+    transparent 70%);
+  filter: blur(40px);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+[data-theme="dark"] .homepage .home-card::before {
+  background: radial-gradient(circle at center,
+    color-mix(in oklab, var(--primary) 15%, transparent),
+    transparent 70%);
+  opacity: 0.8;
+}
+
+/* Title styling */
+.home-title {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* Tagline styling */
+.home-tagline {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  margin: 0 0 2rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* Navigation grid */
+.home-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 32px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    color-mix(in oklab, var(--primary) 25%, transparent),
+    transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.nav-link:hover::before {
+  width: 200%;
+  height: 200%;
+}
+
+.nav-link:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    var(--btn-shadow-raised),
+    0 0 20px rgba(224, 122, 63, 0.15);
+}
+
+[data-theme="dark"] .nav-link:hover {
+  box-shadow:
+    var(--btn-shadow-raised),
+    0 0 24px rgba(217, 117, 66, 0.25);
+}
+
+.nav-link:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: var(--btn-shadow-pressed);
+}
+
+/* Footer styling */
+.home-footer {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 28px;
+  text-align: center;
+  max-width: min(600px, 90vw);
+  z-index: 10;
+}
+
+.home-footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.home-footer a {
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: all 0.2s ease;
+}
+
+.home-footer a:hover {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .homepage-container {
+    transform: translateY(-5vh);
+  }
+
+  .homepage .home-card {
+    padding: 40px 32px;
+  }
+
+  .home-nav {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .nav-link {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+  }
+
+  .home-footer {
+    bottom: 16px;
+    padding: 10px 20px;
+  }
+
+  .home-footer p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage .home-card {
+    padding: 32px 24px;
+  }
+
+  .home-nav {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .nav-link {
+    padding: 12px 18px;
+    font-size: 0.8rem;
+  }
+
+  .home-tagline {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Subtle animation for the card */
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateX(1px) translateY(-1px);
+  }
+  50% {
+    transform: translateX(1px) translateY(-3px);
+  }
+}
+
+.homepage .home-card {
+  animation: float-subtle 6s ease-in-out infinite;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .homepage .home-card {
+    animation: none;
+  }
+
+  .homepage .home-card::before {
+    animation: none;
+  }
+
+  .nav-link:hover {
+    transform: none;
+  }
+}

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import DOMPurify from 'dompurify'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export default function UnlinkedPage() {
   const { slug } = useParams()
+  const { t } = useLanguage()
   const [html, setHtml] = useState('')
   const [status, setStatus] = useState('loading') // 'loading' | 'ready' | 'notfound' | 'error'
 
@@ -34,8 +36,8 @@ export default function UnlinkedPage() {
   if (status === 'loading') {
     return (
       <div className="page">
-        <Link to="/" className="nav-button back-button">Retour à l'accueil</Link>
-        <p>Chargement…</p>
+        <Link to="/" className="nav-button back-button">{t('common.backToHome')}</Link>
+        <p>{t('unlinked.loading')}</p>
       </div>
     )
   }
@@ -43,9 +45,9 @@ export default function UnlinkedPage() {
   if (status === 'notfound') {
     return (
       <div className="page">
-        <Link to="/" className="nav-button back-button">Retour à l'accueil</Link>
-        <h2>Page non trouvée</h2>
-        <p>Aucune page pour “{slug}”.</p>
+        <Link to="/" className="nav-button back-button">{t('common.backToHome')}</Link>
+        <h2>{t('unlinked.notFound.title')}</h2>
+        <p>{t('unlinked.notFound.message').replace('{{slug}}', slug)}</p>
       </div>
     )
   }
@@ -53,16 +55,16 @@ export default function UnlinkedPage() {
   if (status === 'error') {
     return (
       <div className="page">
-        <Link to="/" className="nav-button back-button">Retour à l'accueil</Link>
-        <h2>Erreur de chargement</h2>
-        <p>Impossible de charger cette page.</p>
+        <Link to="/" className="nav-button back-button">{t('common.backToHome')}</Link>
+        <h2>{t('unlinked.error.title')}</h2>
+        <p>{t('unlinked.error.message')}</p>
       </div>
     )
   }
 
   return (
     <div className="page">
-      <Link to="/" className="nav-button back-button">Retour à l'accueil</Link>
+      <Link to="/" className="nav-button back-button">{t('common.backToHome')}</Link>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   )
