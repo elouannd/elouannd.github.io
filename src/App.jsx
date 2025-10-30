@@ -8,6 +8,7 @@ import Autre from './components/Autre';
 import Contact from './components/Contact';
 import UnlinkedPage from './components/UnlinkedPage';
 import NotFound from './components/NotFound';
+import FFMPEGConverter from './components/FFMPEGConverter';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         {/* Public routes */}
         <Route path="/" element={<HomePage />} />
         <Route path="/u/:slug" element={<UnlinkedPage />} />
+        <Route path="/ffmpeg" element={<FFMPEGConverter />} />
 
         {/* Ces routes ne seront rendues qu'en mode développement */}
         {import.meta.env.DEV && (
