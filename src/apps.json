@@ -1,0 +1,16 @@
+[
+  {
+    "id": "eq-trainer",
+    "name": "EQ Ear Trainer",
+    "url": "/apps/eq-trainer",
+    "description": "Train your ears to identify frequencies",
+    "color": "orange"
+  },
+  {
+    "id": "app2",
+    "name": "Experiment Z",
+    "url": "/experiment-z",
+    "description": "An experimental project",
+    "color": "teal"
+  }
+]

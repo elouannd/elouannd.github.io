@@ -3,7 +3,14 @@
     "allow": [
       "Bash(npm install framer-motion)",
       "Bash(npm run dev)",
-      "Bash(git add package.json package-lock.json src/ CLAUDE.md LOCALIZATION.md .claude/)"
+      "Bash(git add package.json package-lock.json src/ CLAUDE.md LOCALIZATION.md .claude/)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nredesign: implement analog glassmorphism with warm orange/green palette\n\nComplete site redesign with blend of glassmorphism, analog aesthetics, and skeumorphism:\n\n- Replace Inter with Space Grotesk font for warmer, friendlier feel\n- New color system: terracotta orange (#E07A3F) and sage green (#7A9B76)\n- Light and dark mode with smooth theme transitions\n- Frosted glass cards with backdrop blur and subtle textures\n- Film grain overlay for analog aesthetic\n- Skeumorphic buttons with raised/pressed states and realistic shadows\n- Paper texture on glass surfaces\n\nNew features:\n- Dark mode toggle (physical sun/moon switch component)\n- French/English localization system with language toggle\n- Theme and language preferences persist in localStorage\n- Spring-based animations with Framer Motion\n- Warm glow effects on interactive elements\n\nNew components:\n- GlassCard: Reusable glass effect component\n- DarkModeToggle: Skeuomorphic theme switcher\n- LanguageToggle: FR/EN language switcher\n- ThemeContext & LanguageContext: State management\n\nAll pages updated to use translations and new design system.\nAdded CLAUDE.md and LOCALIZATION.md documentation.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git add src/components/HomePage.jsx src/components/HomePage.css)",
+      "Bash(npm run build)",
+      "Bash(npm run deploy)",
+      "Bash(rm:*)",
+      "Bash(npm create:*)",
+      "Bash(npm install)"
     ],
     "deny": [],
     "ask": []
