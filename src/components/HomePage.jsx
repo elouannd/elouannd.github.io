@@ -33,7 +33,7 @@ export default function HomePage() {
   return (
     <>
       <SEO
-        title="EQ Ear Trainer - Free Online Frequency Training Tool | ELOUANN"
+        title="Elouann"
         description="Master EQ frequency identification with our free interactive ear trainer. Perfect for audio engineers and music producers. Train your ears with real-time audio processing."
         keywords="EQ ear trainer, frequency recognition, audio training, mixing, mastering, free eq tool, audio engineer, music producer"
         canonicalPath="/"

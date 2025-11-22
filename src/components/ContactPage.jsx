@@ -10,7 +10,7 @@ export default function ContactPage() {
   return (
     <>
       <SEO
-        title="Contact Elouann - Get in Touch | ELOUANN"
+        title="Elouann - Contact"
         description="Get in touch with Elouann for collaboration, projects, or inquiries. Connect via email, GitHub, or social media."
         keywords="contact Elouann, hire developer, collaboration, web developer contact, get in touch"
         canonicalPath="/contact"

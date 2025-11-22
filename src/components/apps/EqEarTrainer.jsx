@@ -130,6 +130,22 @@ export default function EqEarTrainer() {
         }
     }, [])
 
+    // Load AdSense script only on this page
+    useEffect(() => {
+        const script = document.createElement('script')
+        script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2369771525705184'
+        script.async = true
+        script.crossOrigin = 'anonymous'
+        document.head.appendChild(script)
+
+        return () => {
+            // Cleanup: remove script when component unmounts
+            if (document.head.contains(script)) {
+                document.head.removeChild(script)
+            }
+        }
+    }, [])
+
     // Frequencies
     const easyFreqs = [63, 125, 250, 500, 1000, 2000, 4000, 8000]
     const hardFreqs = [
@@ -560,7 +576,7 @@ export default function EqEarTrainer() {
     return (
         <>
             <SEO
-                title="EQ Ear Trainer - Free Online Frequency Recognition Training for Audio Engineers"
+                title="Elouann - EQ Trainer"
                 description="Master EQ frequency identification with our free interactive ear trainer. Gamified learning with real-time audio visualization, streak tracking, XP system, and multiple difficulty levels. Perfect for audio engineers, music producers, mixing engineers, and sound designers. Train with pink noise or your own audio files. Available in English and French."
                 keywords="EQ ear training, frequency recognition, audio training, music production, sound engineering, ear training game, EQ practice, frequency identification, audio education, peaking EQ, parametric EQ, critical listening, mixing skills, mastering, audio engineer training, free EQ trainer, online ear training, frequency training tool, mixing engineer, sound design"
                 canonicalPath="/eq-trainer"

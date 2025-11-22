@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <>
       <SEO
-        title="About Elouann - Web Developer & Audio Enthusiast | ELOUANN"
+        title="Elouann - About"
         description="Learn about Elouann, creator of interactive web applications and audio tools. Passionate about web development, audio engineering, and creative coding."
         keywords="about Elouann, web developer, audio engineer, interactive applications, creative developer"
         canonicalPath="/about"

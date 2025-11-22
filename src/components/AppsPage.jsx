@@ -11,7 +11,7 @@ export default function AppsPage() {
   return (
     <>
       <SEO
-        title="Interactive Apps & Tools - Elouann's Portfolio | ELOUANN"
+        title="Elouann - Apps"
         description="Explore interactive web applications by Elouann. EQ Ear Trainer for audio engineers, creative experiments, and innovative tools for music producers and developers."
         keywords="web apps, interactive tools, EQ trainer, audio apps, creative tools, web applications, music production tools"
         canonicalPath="/apps"
