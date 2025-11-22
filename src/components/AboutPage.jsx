@@ -2,12 +2,20 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import BrandCard from './BrandCard'
 import BrandButton from './BrandButton'
+import SEO from './SEO'
 
 export default function AboutPage() {
   const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
+    <>
+      <SEO
+        title="About Elouann - Web Developer & Audio Enthusiast | ELOUANN"
+        description="Learn about Elouann, creator of interactive web applications and audio tools. Passionate about web development, audio engineering, and creative coding."
+        keywords="about Elouann, web developer, audio engineer, interactive applications, creative developer"
+        canonicalPath="/about"
+      />
+      <div className="min-h-screen flex items-center justify-center p-8">
       <BrandCard className="max-w-2xl" colorAccent="orange">
         <h1 className="text-5xl font-black uppercase mb-6">About</h1>
 
@@ -28,5 +36,6 @@ export default function AboutPage() {
         </BrandButton>
       </BrandCard>
     </div>
+    </>
   )
 }

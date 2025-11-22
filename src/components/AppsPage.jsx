@@ -2,13 +2,21 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import BrandCard from './BrandCard'
 import BrandButton from './BrandButton'
+import SEO from './SEO'
 import appsData from '../apps.json'
 
 export default function AppsPage() {
   const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen p-8">
+    <>
+      <SEO
+        title="Interactive Apps & Tools - Elouann's Portfolio | ELOUANN"
+        description="Explore interactive web applications by Elouann. EQ Ear Trainer for audio engineers, creative experiments, and innovative tools for music producers and developers."
+        keywords="web apps, interactive tools, EQ trainer, audio apps, creative tools, web applications, music production tools"
+        canonicalPath="/apps"
+      />
+      <div className="min-h-screen p-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-12 text-center">
@@ -45,5 +53,6 @@ export default function AppsPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }

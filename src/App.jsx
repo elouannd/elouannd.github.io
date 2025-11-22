@@ -14,7 +14,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/apps" element={<AppsPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/apps/eq-trainer" element={<EqEarTrainer />} />
+        <Route path="/eq-trainer" element={<EqEarTrainer />} />
         {/* Future app routes will go here */}
         <Route path="/app1" element={<div className="min-h-screen flex items-center justify-center text-white text-2xl">App 1 Coming Soon</div>} />
         <Route path="/experiment-z" element={<div className="min-h-screen flex items-center justify-center text-white text-2xl">Experiment Z Coming Soon</div>} />

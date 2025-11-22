@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import BrandCard from '../BrandCard'
 import BrandButton from '../BrandButton'
+import SEO from '../SEO'
+import StructuredData from '../StructuredData'
 
 export default function EqEarTrainer() {
     // Audio Context Refs
@@ -556,7 +558,45 @@ export default function EqEarTrainer() {
     }
 
     return (
-        <div className="min-h-screen bg-brand-beige p-4 flex flex-col gap-4">
+        <>
+            <SEO
+                title="EQ Ear Trainer - Free Online Frequency Recognition Training for Audio Engineers"
+                description="Master EQ frequency identification with our free interactive ear trainer. Gamified learning with real-time audio visualization, streak tracking, XP system, and multiple difficulty levels. Perfect for audio engineers, music producers, mixing engineers, and sound designers. Train with pink noise or your own audio files. Available in English and French."
+                keywords="EQ ear training, frequency recognition, audio training, music production, sound engineering, ear training game, EQ practice, frequency identification, audio education, peaking EQ, parametric EQ, critical listening, mixing skills, mastering, audio engineer training, free EQ trainer, online ear training, frequency training tool, mixing engineer, sound design"
+                canonicalPath="/eq-trainer"
+            />
+            <StructuredData
+                type="webapp"
+                data={{
+                    name: 'EQ Ear Trainer',
+                    description: 'Free interactive gamified EQ ear training application for audio professionals and enthusiasts. Train your frequency recognition skills with real-time audio processing, multiple difficulty levels, and streak-based progression. Perfect for audio engineers, music producers, mixing engineers, and mastering engineers.',
+                    url: 'https://elouann.me/eq-trainer',
+                    category: 'MultimediaApplication',
+                    languages: ['en', 'fr'],
+                    features: [
+                        'Interactive frequency identification game',
+                        'Real-time EQ visualization',
+                        'Gamification with XP and streak tracking',
+                        'Easy and Hard difficulty modes',
+                        'Pink noise or custom audio file sources',
+                        'Adjustable Q factor and gain settings',
+                        'Boost, cut, and mixed EQ modes',
+                        'Bilingual interface (English/French)',
+                        'File history management with IndexedDB',
+                        'Responsive design for all devices'
+                    ]
+                }}
+            />
+            <StructuredData
+                type="breadcrumb"
+                data={{
+                    items: [
+                        { name: 'Home', url: 'https://elouann.me' },
+                        { name: 'EQ Ear Trainer', url: 'https://elouann.me/eq-trainer' }
+                    ]
+                }}
+            />
+            <div className="min-h-screen bg-brand-beige p-4 flex flex-col gap-4">
 
             {/* HUD Header */}
             <div className="flex justify-between items-end border-b-4 border-black pb-4">
@@ -774,5 +814,6 @@ export default function EqEarTrainer() {
                 <p className="text-sm font-bold opacity-60">{t.footer}</p>
             </div>
         </div>
+        </>
     )
 }

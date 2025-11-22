@@ -2,12 +2,20 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import BrandCard from './BrandCard'
 import BrandButton from './BrandButton'
+import SEO from './SEO'
 
 export default function ContactPage() {
   const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
+    <>
+      <SEO
+        title="Contact Elouann - Get in Touch | ELOUANN"
+        description="Get in touch with Elouann for collaboration, projects, or inquiries. Connect via email, GitHub, or social media."
+        keywords="contact Elouann, hire developer, collaboration, web developer contact, get in touch"
+        canonicalPath="/contact"
+      />
+      <div className="min-h-screen flex items-center justify-center p-8">
       <BrandCard className="max-w-2xl" colorAccent="teal">
         <h1 className="text-5xl font-black uppercase mb-6">Contact</h1>
 
@@ -39,5 +47,6 @@ export default function ContactPage() {
         </BrandButton>
       </BrandCard>
     </div>
+    </>
   )
 }

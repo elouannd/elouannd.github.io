@@ -2,7 +2,7 @@
   {
     "id": "eq-trainer",
     "name": "EQ Ear Trainer",
-    "url": "/apps/eq-trainer",
+    "url": "/eq-trainer",
     "description": "Train your ears to identify frequencies",
     "color": "orange"
   },
