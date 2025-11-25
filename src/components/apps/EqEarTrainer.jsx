@@ -17,7 +17,9 @@ export default function EqEarTrainer() {
     const [isPlaying, setIsPlaying] = useState(false)
     const [isBypassed, setIsBypassed] = useState(false)
     const [targetFreq, setTargetFreq] = useState(null)
+    const [targetGainType, setTargetGainType] = useState(null) // 'boost' or 'cut' for mixed mode
     const [selectedFreq, setSelectedFreq] = useState(null) // New: Selection state
+    const [selectedGainType, setSelectedGainType] = useState(null) // User's boost/cut guess
     const [feedback, setFeedback] = useState(null)
     const [fileName, setFileName] = useState(null)
     const [fileHistory, setFileHistory] = useState([])
@@ -46,6 +48,7 @@ export default function EqEarTrainer() {
             boost: 'boost',
             cut: 'cut',
             mixed: 'mixed',
+            selectBoostOrCut: 'Select Boost or Cut',
             gain: 'Gain',
             qFactor: 'Q Factor',
             difficulty: 'Difficulty',
@@ -83,6 +86,7 @@ export default function EqEarTrainer() {
             boost: 'boost',
             cut: 'cut',
             mixed: 'mixte',
+            selectBoostOrCut: 'Sélectionner Boost ou Cut',
             gain: 'Gain',
             qFactor: 'Facteur Q',
             difficulty: 'Difficulté',
@@ -512,13 +516,23 @@ export default function EqEarTrainer() {
         setTargetFreq(randomFreq)
         setFeedback(null)
         setSelectedFreq(null) // Reset selection
+        setSelectedGainType(null) // Reset gain type selection
         setIsHearingAnswer(false) // Reset toggle
         setIsBypassed(false)
 
         let targetGain = gainDb
-        if (eqMode === 'cut') targetGain = -gainDb
-        if (eqMode === 'mixed') targetGain = Math.random() > 0.5 ? gainDb : -gainDb
+        let gainType = 'boost' // Default
 
+        if (eqMode === 'cut') {
+            targetGain = -gainDb
+            gainType = 'cut'
+        } else if (eqMode === 'mixed') {
+            const isBoost = Math.random() > 0.5
+            targetGain = isBoost ? gainDb : -gainDb
+            gainType = isBoost ? 'boost' : 'cut'
+        }
+
+        setTargetGainType(gainType)
         currentRoundGainRef.current = targetGain
 
         // Frequency is now set by the reactive effect
@@ -539,8 +553,16 @@ export default function EqEarTrainer() {
         if (!isPlaying || feedback) return
 
         if (selectedFreq === freq) {
-            // Confirm Guess
-            if (freq === targetFreq) {
+            // In mixed mode, require both frequency and gain type selection before confirming
+            if (eqMode === 'mixed' && !selectedGainType) {
+                return // Don't confirm yet, need to select boost/cut
+            }
+
+            // Confirm Guess - check both frequency and gain type (in mixed mode)
+            const freqCorrect = freq === targetFreq
+            const gainTypeCorrect = eqMode === 'mixed' ? selectedGainType === targetGainType : true
+
+            if (freqCorrect && gainTypeCorrect) {
                 setStreak(s => {
                     const newStreak = s + 1
                     if (newStreak > bestStreak) setBestStreak(newStreak)
@@ -550,13 +572,22 @@ export default function EqEarTrainer() {
                 setTimeout(() => startNewRoundWithGain(), 1000)
             } else {
                 setStreak(0)
-                setFeedback({ type: 'wrong', msg: `MISS! ${targetFreq}Hz` })
+                let errorMsg = `MISS! ${targetFreq}Hz`
+                if (eqMode === 'mixed') {
+                    errorMsg += ` (${targetGainType})`
+                }
+                setFeedback({ type: 'wrong', msg: errorMsg })
                 setTimeout(() => startNewRoundWithGain(), 1500)
             }
         } else {
             // Select
             setSelectedFreq(freq)
         }
+    }
+
+    const handleGainTypeSelection = (type) => {
+        if (!isPlaying || feedback || eqMode !== 'mixed') return
+        setSelectedGainType(type)
     }
 
     return (
@@ -717,7 +748,11 @@ export default function EqEarTrainer() {
                         ) : (
                             <div className="text-center opacity-50">
                                 <div className="text-2xl font-black uppercase tracking-widest">
-                                    {isPlaying ? (selectedFreq ? t.confirmSelection : t.selectFrequency) : t.systemReady}
+                                    {isPlaying ? (
+                                        selectedFreq ? (
+                                            eqMode === 'mixed' && !selectedGainType ? t.selectBoostOrCut : t.confirmSelection
+                                        ) : t.selectFrequency
+                                    ) : t.systemReady}
                                 </div>
                             </div>
                         )}
@@ -763,7 +798,40 @@ export default function EqEarTrainer() {
                         </div>
                     </div>
 
-
+                    {/* Boost/Cut Selector - Only in Mixed Mode */}
+                    {eqMode === 'mixed' && selectedFreq && isPlaying && !feedback && (
+                        <div className="bg-white/80 border-4 border-black p-4 shadow-brutal">
+                            <div className="text-center mb-3">
+                                <span className="text-sm font-bold uppercase opacity-60">{t.selectBoostOrCut}</span>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <button
+                                    onClick={() => handleGainTypeSelection('boost')}
+                                    className={`
+                                        p-4 border-4 border-black font-black uppercase text-xl tracking-wider
+                                        ${selectedGainType === 'boost'
+                                            ? 'bg-green-400 -translate-y-1 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'
+                                            : 'bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)]'}
+                                        transition-all
+                                    `}
+                                >
+                                    BOOST ↑
+                                </button>
+                                <button
+                                    onClick={() => handleGainTypeSelection('cut')}
+                                    className={`
+                                        p-4 border-4 border-black font-black uppercase text-xl tracking-wider
+                                        ${selectedGainType === 'cut'
+                                            ? 'bg-red-400 -translate-y-1 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'
+                                            : 'bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)]'}
+                                        transition-all
+                                    `}
+                                >
+                                    CUT ↓
+                                </button>
+                            </div>
+                        </div>
+                    )}
 
                     {/* Bottom Controls */}
                     <div className={`grid gap-4 ${difficulty === 'easy' && selectedFreq && isPlaying ? 'grid-cols-3' : 'grid-cols-2'}`}>
