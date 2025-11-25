@@ -39,4 +39,95 @@
     pointer-events: none;
     border-radius: inherit;
   }
+
+  /* Glass Variants */
+  .glass-thick {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.6) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glass-light {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .glass-tinted-orange {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 166, 102, 0.2) 0%,
+      rgba(255, 166, 102, 0.05) 100%
+    );
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+  }
+
+  .glass-tinted-teal {
+    background: linear-gradient(
+      135deg,
+      rgba(102, 242, 224, 0.2) 0%,
+      rgba(102, 242, 224, 0.05) 100%
+    );
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+  }
+
+  /* Pattern Utilities */
+  .pattern-dots {
+    background-image: radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .pattern-grid {
+    background-image:
+      linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .pattern-diagonal {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(0,0,0,0.015) 10px,
+      rgba(0,0,0,0.015) 20px
+    );
+  }
+
+  /* Responsive Optimizations */
+  @media (max-width: 768px) {
+    .shadow-brutal-lg {
+      box-shadow: 6px 6px 0px 0px #000;
+    }
+
+    .glass-thick {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .animate-float {
+      animation: none;
+    }
+  }
+
+  /* Accessibility - Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }

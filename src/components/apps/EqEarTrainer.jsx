@@ -642,15 +642,40 @@ export default function EqEarTrainer() {
             />
             <div className="min-h-screen bg-brand-beige p-4 flex flex-col gap-4">
 
-            {/* HUD Header */}
-            <div className="flex justify-center items-center gap-16 border-b-4 border-black pb-4">
-                <div className="text-center">
-                    <div className="text-xs font-bold uppercase tracking-widest opacity-60">{t.currentStreak}</div>
-                    <div className="text-5xl font-black text-brand-teal">{streak}</div>
+            {/* HUD Header - ENHANCED with corner brackets and indicators! */}
+            <div className="relative flex justify-center items-center gap-16 border-b-4 border-black pb-4 mb-4 bg-gradient-to-r from-white/20 via-white/40 to-white/20">
+                {/* Decorative corner brackets - SO COOL! */}
+                <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-brand-orange pointer-events-none" />
+                <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-brand-teal pointer-events-none" />
+
+                {/* Current Streak with playful hover */}
+                <div className="text-center relative group cursor-default">
+                    <div className="text-xs font-bold uppercase tracking-widest opacity-60 mb-1">{t.currentStreak}</div>
+                    <div className="relative">
+                        <div className="text-5xl font-black text-brand-teal drop-shadow-[6px_6px_0px_rgba(0,0,0,0.1)] transition-transform group-hover:scale-110">
+                            {streak}
+                        </div>
+                        {/* Flame indicator when streak > 0 - FIRE! 🔥 */}
+                        {streak > 0 && (
+                            <div className="absolute -top-2 -right-2 w-5 h-5 bg-brand-orange border-2 border-black animate-pulse" />
+                        )}
+                    </div>
                 </div>
-                <div className="text-center">
-                    <div className="text-xs font-bold uppercase tracking-widest opacity-60">{t.bestStreak}</div>
-                    <div className="text-5xl font-black text-brand-orange">{bestStreak}</div>
+
+                {/* Best Streak with trophy */}
+                <div className="text-center relative group cursor-default">
+                    <div className="text-xs font-bold uppercase tracking-widest opacity-60 mb-1">{t.bestStreak}</div>
+                    <div className="relative">
+                        <div className="text-5xl font-black text-brand-orange drop-shadow-[6px_6px_0px_rgba(0,0,0,0.1)] transition-transform group-hover:scale-110">
+                            {bestStreak}
+                        </div>
+                        {/* Trophy for milestone - YOU'RE A CHAMPION! 🏆 */}
+                        {bestStreak >= 5 && (
+                            <div className="absolute -top-3 -right-3 w-6 h-6 border-2 border-black bg-yellow-300 flex items-center justify-center text-xs shadow-brutal-sm group-hover:rotate-12 transition-transform">
+                                ★
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
 
@@ -658,12 +683,16 @@ export default function EqEarTrainer() {
 
                 {/* Left Panel: Settings */}
                 <div className="lg:col-span-3 flex flex-col gap-4">
-                    <BrandCard className="flex flex-col gap-4 bg-white/80">
-                        <div className="flex justify-between items-center border-b-2 border-black pb-1">
-                            <h3 className="font-black uppercase text-lg">{t.missionConfig}</h3>
+                    <BrandCard cornerAccent={true} glassVariant="thick" className="flex flex-col gap-4">
+                        <div className="flex justify-between items-center border-b-4 border-black pb-3 mb-2">
+                            <div className="flex items-center gap-2">
+                                {/* Pulsing status indicator - ALIVE! */}
+                                <div className="w-2 h-2 bg-brand-orange border-2 border-black animate-pulse" />
+                                <h3 className="font-black uppercase text-lg">{t.missionConfig}</h3>
+                            </div>
                             <button
                                 onClick={() => setLanguage(language === 'en' ? 'fr' : 'en')}
-                                className="text-xs font-bold uppercase px-2 py-1 border-2 border-black hover:bg-black hover:text-white transition-all"
+                                className="text-xs font-bold uppercase px-3 py-1.5 border-2 border-black hover:bg-black hover:text-white transition-all shadow-brutal-sm hover:shadow-brutal-pressed hover:translate-x-0.5 hover:translate-y-0.5"
                             >
                                 {language.toUpperCase()}
                             </button>
@@ -748,12 +777,22 @@ export default function EqEarTrainer() {
                 {/* Center: Game Grid */}
                 <div className="lg:col-span-9 flex flex-col gap-4">
 
-                    {/* Feedback Area (Text Only) */}
+                    {/* Feedback Area - ENHANCED with stars! */}
                     <div className="h-16 flex items-center justify-center relative">
                         {feedback ? (
-                            <div className="relative z-10 text-center animate-bounce bg-white/90 p-2 border-2 border-black shadow-brutal">
-                                <div className={`text-4xl font-black uppercase ${feedback.type === 'correct' ? 'text-green-600' : 'text-red-600'}`}>
-                                    {feedback.msg}
+                            <div className="relative z-10 text-center">
+                                <div className={`inline-block bg-white/95 px-6 py-4 border-4 border-black relative ${feedback.type === 'correct' ? 'shadow-[10px_10px_0px_0px_#10b981] animate-bounce' : 'shadow-[10px_10px_0px_0px_#ef4444]'}`}>
+                                    {/* Decorative stars for correct - CELEBRATION! ✨ */}
+                                    {feedback.type === 'correct' && (
+                                        <>
+                                            <div className="absolute -top-3 -left-3 w-5 h-5 bg-yellow-300 border-2 border-black flex items-center justify-center text-xs shadow-brutal-sm">★</div>
+                                            <div className="absolute -top-3 -right-3 w-5 h-5 bg-yellow-300 border-2 border-black flex items-center justify-center text-xs shadow-brutal-sm">★</div>
+                                        </>
+                                    )}
+
+                                    <div className={`text-4xl font-black uppercase ${feedback.type === 'correct' ? 'text-green-600' : 'text-red-600'}`}>
+                                        {feedback.msg}
+                                    </div>
                                 </div>
                             </div>
                         ) : (
@@ -769,9 +808,14 @@ export default function EqEarTrainer() {
                         )}
                     </div>
 
-                    <div className="flex-1 bg-white/40 border-4 border-black p-4 shadow-brutal relative overflow-hidden flex flex-col">
-                        {/* Visualizer Canvas (Background) */}
-                        <canvas ref={canvasRef} width={800} height={400} className="absolute inset-0 w-full h-full opacity-50" />
+                    <div className="flex-1 bg-gradient-to-br from-white/50 to-white/30 border-4 border-black p-6 shadow-brutal-lg relative overflow-hidden flex flex-col">
+                        {/* Background decorations - PLAYFUL! */}
+                        <div className="absolute inset-0 pattern-grid opacity-10 pointer-events-none" />
+                        <div className="absolute top-0 left-0 w-24 h-24 border-t-4 border-l-4 border-brand-orange/30 pointer-events-none" />
+                        <div className="absolute bottom-0 right-0 w-24 h-24 border-b-4 border-r-4 border-brand-teal/30 pointer-events-none" />
+
+                        {/* Visualizer Canvas with enhanced glow */}
+                        <canvas ref={canvasRef} width={800} height={400} className="absolute inset-0 w-full h-full opacity-60 drop-shadow-[0_0_30px_rgba(255,166,102,0.2)]" />
 
                         {!selectedFreq && (
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
@@ -792,18 +836,28 @@ export default function EqEarTrainer() {
                                     onClick={() => handleInteraction(freq)}
                                     disabled={!isPlaying || feedback !== null}
                                     className={`
-                                aspect-square flex flex-col items-center justify-center 
-                                border-2 border-black 
-                                ${selectedFreq === freq ? 'bg-brand-orange -translate-y-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]' : 'bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'}
-                                hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]
-                                active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
-                                transition-all
-                                disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none
+                                group relative aspect-square flex flex-col items-center justify-center
+                                border-4 border-black overflow-hidden
+                                ${selectedFreq === freq ? 'bg-brand-orange scale-105 shadow-brutal-lg rotate-1' : 'bg-white shadow-brutal'}
+                                hover:scale-105 hover:shadow-brutal-lg hover:rotate-1
+                                active:scale-95 active:shadow-brutal-pressed active:rotate-0
+                                transition-all duration-200
+                                disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-brutal-sm
                             `}
                                 >
-                                    <span className="text-lg font-black">{freq >= 1000 ? `${freq / 1000}k` : freq}</span>
-                                    <span className="text-[10px] font-bold uppercase opacity-50">Hz</span>
-                                    {selectedFreq === freq && <span className="text-[8px] font-black uppercase mt-1">{t.confirm}</span>}
+                                    {/* Corner accent when selected */}
+                                    {selectedFreq === freq && (
+                                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-black border-2 border-black z-10" />
+                                    )}
+
+                                    {/* Gradient overlay on hover */}
+                                    <div className="absolute inset-0 bg-gradient-to-br from-brand-teal/0 via-brand-teal/0 to-brand-teal/20 opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
+
+                                    <span className="text-lg font-black relative z-10 group-hover:scale-110 transition-transform">{freq >= 1000 ? `${freq / 1000}k` : freq}</span>
+                                    <span className="text-[10px] font-bold uppercase opacity-50 relative z-10">Hz</span>
+                                    {selectedFreq === freq && (
+                                        <span className="text-[8px] font-black uppercase mt-1 relative z-10 animate-pulse">{t.confirm}</span>
+                                    )}
                                 </button>
                             ))}
                         </div>
@@ -811,34 +865,50 @@ export default function EqEarTrainer() {
 
                     {/* Boost/Cut Selector - Only in Mixed Mode */}
                     {eqMode === 'mixed' && selectedFreq && isPlaying && !feedback && (
-                        <div className="bg-white/80 border-4 border-black p-4 shadow-brutal">
-                            <div className="text-center mb-3">
-                                <span className="text-sm font-bold uppercase opacity-60">{t.selectBoostOrCut}</span>
+                        <div className="glass-thick border-4 border-black p-6 shadow-brutal-lg relative overflow-hidden animate-slide-in-bottom">
+                            {/* Corner brackets */}
+                            <div className="absolute top-2 left-2 w-4 h-4 border-l-4 border-t-4 border-brand-orange" />
+                            <div className="absolute top-2 right-2 w-4 h-4 border-r-4 border-t-4 border-brand-teal" />
+
+                            <div className="text-center mb-4">
+                                <span className="text-sm font-black uppercase opacity-70 tracking-wide">{t.selectBoostOrCut}</span>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <button
                                     onClick={() => handleGainTypeSelection('boost')}
                                     className={`
-                                        p-4 border-4 border-black font-black uppercase text-xl tracking-wider
+                                        group relative p-4 border-4 border-black font-black uppercase text-xl tracking-wider overflow-hidden
                                         ${selectedGainType === 'boost'
-                                            ? 'bg-green-400 -translate-y-1 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'
-                                            : 'bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)]'}
-                                        transition-all
+                                            ? 'bg-green-400 scale-105 shadow-brutal-lg rotate-1'
+                                            : 'bg-white shadow-brutal hover:scale-105 hover:shadow-brutal-lg hover:rotate-1'}
+                                        active:scale-95 active:shadow-brutal-pressed active:rotate-0
+                                        transition-all duration-200
                                     `}
                                 >
-                                    BOOST ↑
+                                    {/* Corner accent when selected */}
+                                    {selectedGainType === 'boost' && (
+                                        <div className="absolute -top-1 -left-1 w-3 h-3 bg-black border-2 border-black z-10" />
+                                    )}
+                                    {/* Arrow that bounces */}
+                                    <span className="inline-block group-hover:-translate-y-1 transition-transform">BOOST ↑</span>
                                 </button>
                                 <button
                                     onClick={() => handleGainTypeSelection('cut')}
                                     className={`
-                                        p-4 border-4 border-black font-black uppercase text-xl tracking-wider
+                                        group relative p-4 border-4 border-black font-black uppercase text-xl tracking-wider overflow-hidden
                                         ${selectedGainType === 'cut'
-                                            ? 'bg-red-400 -translate-y-1 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'
-                                            : 'bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)]'}
-                                        transition-all
+                                            ? 'bg-red-400 scale-105 shadow-brutal-lg -rotate-1'
+                                            : 'bg-white shadow-brutal hover:scale-105 hover:shadow-brutal-lg hover:-rotate-1'}
+                                        active:scale-95 active:shadow-brutal-pressed active:rotate-0
+                                        transition-all duration-200
                                     `}
                                 >
-                                    CUT ↓
+                                    {/* Corner accent when selected */}
+                                    {selectedGainType === 'cut' && (
+                                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-black border-2 border-black z-10" />
+                                    )}
+                                    {/* Arrow that bounces */}
+                                    <span className="inline-block group-hover:translate-y-1 transition-transform">CUT ↓</span>
                                 </button>
                             </div>
                         </div>
@@ -848,8 +918,12 @@ export default function EqEarTrainer() {
                     <div className={`grid gap-4 ${difficulty === 'easy' && selectedFreq && isPlaying ? 'grid-cols-3' : 'grid-cols-2'}`}>
                         <BrandButton
                             onClick={isPlaying ? stopAudio : startAudio}
-                            className={`w-full ${isPlaying ? 'bg-red-500 text-white' : 'bg-green-500'}`}
+                            className={`group w-full relative overflow-hidden ${isPlaying ? 'bg-red-500 text-white' : 'bg-green-500'}`}
                         >
+                            {/* Animated dot when playing */}
+                            {isPlaying && (
+                                <span className="inline-block w-2 h-2 bg-white rounded-full mr-2 animate-pulse" />
+                            )}
                             {isPlaying ? t.abort : t.initiate}
                         </BrandButton>
 
@@ -857,11 +931,18 @@ export default function EqEarTrainer() {
                             onClick={toggleBypassWithRef}
                             disabled={!isPlaying}
                             className={`
-                        w-full border-4 border-black font-black uppercase text-lg tracking-wider
-                        ${isBypassed ? 'bg-gray-300 text-gray-600' : 'bg-yellow-400 text-black shadow-brutal'}
-                        transition-all
+                        group relative w-full border-4 border-black font-black uppercase text-lg tracking-wider overflow-hidden
+                        ${isBypassed ? 'bg-gray-300 text-gray-600 shadow-brutal-sm' : 'bg-yellow-400 text-black shadow-brutal'}
+                        hover:scale-105 hover:shadow-brutal-lg hover:rotate-1
+                        active:scale-95 active:shadow-brutal-pressed active:rotate-0
+                        disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:rotate-0
+                        transition-all duration-200
                     `}
                         >
+                            {/* Corner accent when engaged */}
+                            {!isBypassed && isPlaying && (
+                                <div className="absolute -top-1 -right-1 w-3 h-3 bg-black border-2 border-black z-10" />
+                            )}
                             {isBypassed ? t.bypassed : t.eqEngaged}
                         </button>
 
@@ -870,11 +951,21 @@ export default function EqEarTrainer() {
                             <button
                                 onClick={() => setIsHearingAnswer(!isHearingAnswer)}
                                 className={`
-                                    w-full border-4 border-black font-black uppercase text-lg tracking-wider
-                                    ${isHearingAnswer ? 'bg-brand-orange text-black shadow-brutal' : 'bg-blue-400 text-black shadow-brutal'}
-                                    transition-all
+                                    group relative w-full border-4 border-black font-black uppercase text-lg tracking-wider overflow-hidden
+                                    ${isHearingAnswer ? 'bg-brand-orange text-black shadow-brutal-lg scale-105 rotate-1' : 'bg-blue-400 text-black shadow-brutal'}
+                                    hover:scale-105 hover:shadow-brutal-lg hover:rotate-1
+                                    active:scale-95 active:shadow-brutal-pressed active:rotate-0
+                                    transition-all duration-200
                                 `}
                             >
+                                {/* Corner accent when hearing answer */}
+                                {isHearingAnswer && (
+                                    <div className="absolute -top-1 -left-1 w-3 h-3 bg-black border-2 border-black z-10" />
+                                )}
+                                {/* Speaker icon that pulses when active */}
+                                {isHearingAnswer && (
+                                    <span className="inline-block mr-2 animate-pulse">🔊</span>
+                                )}
                                 {isHearingAnswer ? t.hearTarget : t.hearMyAnswer}
                             </button>
                         )}
@@ -885,8 +976,19 @@ export default function EqEarTrainer() {
             </div>
 
             {/* Footer */}
-            <div className="text-center py-4 border-t-2 border-black">
-                <p className="text-sm font-bold opacity-60">{t.footer}</p>
+            <div className="text-center py-6 border-t-4 border-black/10 relative">
+                {/* Decorative accent lines */}
+                <div className="absolute left-0 top-0 w-24 h-1 bg-brand-orange" />
+                <div className="absolute right-0 top-0 w-24 h-1 bg-brand-teal" />
+
+                {/* Fun decorative dots */}
+                <div className="flex items-center justify-center gap-2 mb-2">
+                    <div className="w-2 h-2 bg-brand-orange border-2 border-black rotate-45" />
+                    <div className="w-2 h-2 bg-brand-teal border-2 border-black" />
+                    <div className="w-2 h-2 bg-brand-orange border-2 border-black rotate-45" />
+                </div>
+
+                <p className="text-sm font-black uppercase opacity-70 tracking-wide">{t.footer}</p>
             </div>
         </div>
         </>
