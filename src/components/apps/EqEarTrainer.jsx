@@ -27,8 +27,6 @@ export default function EqEarTrainer() {
     // Gamification State
     const [streak, setStreak] = useState(0)
     const [bestStreak, setBestStreak] = useState(0)
-    const [xp, setXp] = useState(0)
-    const [level, setLevel] = useState(1)
 
     // Settings
     const [difficulty, setDifficulty] = useState('easy')
@@ -41,8 +39,6 @@ export default function EqEarTrainer() {
     // Translations
     const translations = {
         en: {
-            operatorLevel: 'Operator Level',
-            xp: 'XP',
             currentStreak: 'Current Streak',
             bestStreak: 'Best Streak',
             missionConfig: 'Mission Config',
@@ -80,8 +76,6 @@ export default function EqEarTrainer() {
             footer: 'Made by Elouann - 2025'
         },
         fr: {
-            operatorLevel: 'Niveau Opérateur',
-            xp: 'XP',
             currentStreak: 'Série Actuelle',
             bestStreak: 'Meilleure Série',
             missionConfig: 'Config Mission',
@@ -217,12 +211,6 @@ export default function EqEarTrainer() {
         }
         loadHistory()
     }, [])
-
-    // Level Calculation
-    useEffect(() => {
-        const newLevel = Math.floor(Math.sqrt(xp / 100)) + 1
-        if (newLevel > level) setLevel(newLevel)
-    }, [xp])
 
     // Audio Init
     useEffect(() => {
@@ -553,18 +541,16 @@ export default function EqEarTrainer() {
         if (selectedFreq === freq) {
             // Confirm Guess
             if (freq === targetFreq) {
-                const xpGain = 100 + (streak * 10) + (difficulty === 'hard' ? 50 : 0)
-                setXp(x => x + xpGain)
                 setStreak(s => {
                     const newStreak = s + 1
                     if (newStreak > bestStreak) setBestStreak(newStreak)
                     return newStreak
                 })
-                setFeedback({ type: 'correct', msg: 'PERFECT!', xp: xpGain })
+                setFeedback({ type: 'correct', msg: 'PERFECT!' })
                 setTimeout(() => startNewRoundWithGain(), 1000)
             } else {
                 setStreak(0)
-                setFeedback({ type: 'wrong', msg: `MISS! ${targetFreq}Hz`, xp: 0 })
+                setFeedback({ type: 'wrong', msg: `MISS! ${targetFreq}Hz` })
                 setTimeout(() => startNewRoundWithGain(), 1500)
             }
         } else {
@@ -615,19 +601,14 @@ export default function EqEarTrainer() {
             <div className="min-h-screen bg-brand-beige p-4 flex flex-col gap-4">
 
             {/* HUD Header */}
-            <div className="flex justify-between items-end border-b-4 border-black pb-4">
-                <div>
-                    <div className="text-xs font-bold uppercase tracking-widest opacity-60">{t.operatorLevel}</div>
-                    <div className="text-4xl font-black">{level}</div>
-                    <div className="text-xs font-bold uppercase text-brand-orange">{xp} {t.xp}</div>
-                </div>
+            <div className="flex justify-center items-center gap-16 border-b-4 border-black pb-4">
                 <div className="text-center">
                     <div className="text-xs font-bold uppercase tracking-widest opacity-60">{t.currentStreak}</div>
                     <div className="text-5xl font-black text-brand-teal">{streak}</div>
                 </div>
-                <div className="text-right">
+                <div className="text-center">
                     <div className="text-xs font-bold uppercase tracking-widest opacity-60">{t.bestStreak}</div>
-                    <div className="text-2xl font-black">{bestStreak}</div>
+                    <div className="text-5xl font-black text-brand-orange">{bestStreak}</div>
                 </div>
             </div>
 
@@ -732,7 +713,6 @@ export default function EqEarTrainer() {
                                 <div className={`text-4xl font-black uppercase ${feedback.type === 'correct' ? 'text-green-600' : 'text-red-600'}`}>
                                     {feedback.msg}
                                 </div>
-                                {feedback.xp > 0 && <div className="text-xl font-bold text-brand-orange">+{feedback.xp} XP</div>}
                             </div>
                         ) : (
                             <div className="text-center opacity-50">
