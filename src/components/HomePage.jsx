@@ -52,7 +52,7 @@ export default function HomePage() {
         data={{
           name: 'Elouann',
           url: 'https://elouann.me',
-          email: 'domenech@elouann.me',
+          email: 'domenech@elouann.ca',
           jobTitle: 'Web Developer',
           description: 'Creator of EQ Ear Trainer and interactive web applications for audio professionals',
           knowsAbout: ['Web Development', 'Audio Engineering', 'Interactive Design', 'React', 'Web Audio API']
@@ -124,9 +124,9 @@ export default function HomePage() {
           <div className="absolute right-0 top-0 w-24 h-1 bg-brand-teal" />
 
           <div className="text-center">
-            <a href="mailto:domenech@elouann.me" className="group inline-block relative">
+            <a href="mailto:domenech@elouann.ca" className="group inline-block relative">
               <span className="text-lg font-serif italic text-black/60 group-hover:text-black transition-colors">
-                domenech@elouann.me
+                domenech@elouann.ca
               </span>
               {/* Animated underline */}
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-black scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
