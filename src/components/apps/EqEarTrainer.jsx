@@ -320,8 +320,19 @@ export default function EqEarTrainer() {
         // Use current gain setting (or negative if cut mode)
         // For visualization, let's show what the user *would* get
         let visGain = gainDb
-        if (eqMode === 'cut') visGain = -gainDb
-        if (eqMode === 'mixed') visGain = gainDb // Just show boost for mixed as "potential" or maybe dashed? Let's show boost.
+        if (eqMode === 'cut') {
+            visGain = -gainDb
+        } else if (eqMode === 'mixed') {
+            // In mixed mode, show the user's selection if they've made one
+            if (selectedGainType === 'cut') {
+                visGain = -gainDb
+            } else if (selectedGainType === 'boost') {
+                visGain = gainDb
+            } else {
+                // No selection yet, default to boost
+                visGain = gainDb
+            }
+        }
         dummyFilter.gain.value = visGain
 
         dummyFilter.getFrequencyResponse(frequencyHz, magResponse, phaseResponse)
@@ -342,7 +353,7 @@ export default function EqEarTrainer() {
         }
         ctx.stroke()
 
-    }, [selectedFreq, gainDb, qFactor, eqMode])
+    }, [selectedFreq, gainDb, qFactor, eqMode, selectedGainType])
 
 
     const startAudio = async () => {
