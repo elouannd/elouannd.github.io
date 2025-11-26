@@ -29,6 +29,22 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://elouann.ca" />
 
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ELOUANN Portfolio",
+      "url": "https://elouann.ca",
+      "description": "Portfolio and interactive web applications by Elouann. Featuring EQ Ear Trainer for audio engineers, creative experiments, and more.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://elouann.ca/apps?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2369771525705184"
      crossorigin="anonymous"></script>
@@ -48,6 +64,19 @@
     <link rel="stylesheet" crossorigin href="/assets/index-CV4_bFKY.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Fallback content for crawlers and no-JS users -->
+      <noscript>
+        <h1>ELOUANN - Portfolio & Interactive Web Apps</h1>
+        <p>Portfolio and interactive web applications by Elouann. Featuring EQ Ear Trainer for audio engineers, creative experiments, and more.</p>
+        <nav>
+          <a href="/apps">Apps</a> | 
+          <a href="/eq-trainer">EQ Ear Trainer</a> | 
+          <a href="/audio-calculator">Audio Calculator</a> | 
+          <a href="/about">About</a> | 
+          <a href="/contact">Contact</a>
+        </nav>
+      </noscript>
+    </div>
   </body>
 </html>
