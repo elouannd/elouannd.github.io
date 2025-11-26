@@ -828,30 +828,36 @@ export default function EqEarTrainer() {
     return (
         <>
             <SEO
-                title="Elouann - EQ Trainer"
-                description="Master EQ frequency identification with our free interactive ear trainer. Gamified learning with real-time audio visualization, streak tracking, XP system, and multiple difficulty levels. Perfect for audio engineers, music producers, mixing engineers, and sound designers. Train with pink noise or your own audio files. Available in English and French."
-                keywords="EQ ear training, frequency recognition, audio training, music production, sound engineering, ear training game, EQ practice, frequency identification, audio education, peaking EQ, parametric EQ, critical listening, mixing skills, mastering, audio engineer training, free EQ trainer, online ear training, frequency training tool, mixing engineer, sound design"
+                title="Free EQ Ear Trainer - Learn Frequency Recognition | Elouann"
+                description="Master EQ frequency identification with our free interactive ear trainer. Features reactive audio visualizer, keyboard shortcuts, persistent stats tracking, streak system, and frequency guide. Perfect for audio engineers, music producers, and sound designers. Train with pink noise or your own audio files. No signup required."
+                keywords="EQ ear training, frequency recognition, audio training, music production, sound engineering, ear training game, EQ practice, frequency identification, audio education, peaking EQ, parametric EQ, critical listening, mixing skills, mastering, audio engineer training, free EQ trainer, online ear training, frequency training tool, mixing engineer, sound design, audio visualizer, frequency guide, ear training app"
                 canonicalPath="/eq-trainer"
             />
             <StructuredData
                 type="webapp"
                 data={{
                     name: 'EQ Ear Trainer',
-                    description: 'Free interactive gamified EQ ear training application for audio professionals and enthusiasts. Train your frequency recognition skills with real-time audio processing, multiple difficulty levels, and streak-based progression. Perfect for audio engineers, music producers, mixing engineers, and mastering engineers.',
+                    description: 'Free interactive gamified EQ ear training application for audio professionals and enthusiasts. Train your frequency recognition skills with real-time audio processing, reactive audio visualizer, keyboard shortcuts, persistent statistics, and streak-based progression. Perfect for audio engineers, music producers, mixing engineers, and mastering engineers. No signup required.',
                     url: 'https://elouann.me/eq-trainer',
                     category: 'MultimediaApplication',
                     languages: ['en', 'fr'],
                     features: [
                         'Interactive frequency identification game',
-                        'Real-time EQ visualization',
-                        'Gamification with XP and streak tracking',
-                        'Easy and Hard difficulty modes',
-                        'Pink noise or custom audio file sources',
-                        'Adjustable Q factor and gain settings',
+                        'Real-time EQ visualization with canvas',
+                        'Fun reactive audio visualizer with dancing bars',
+                        'Keyboard shortcuts for power users (Space, Enter, 1-8)',
+                        'Persistent stats with localStorage (streak, accuracy, total rounds)',
+                        'Milestone celebrations at 5, 10, 25, 50, 100 streaks',
+                        'Comprehensive frequency guide with descriptions',
+                        'Easy and Hard difficulty modes (8 vs 22 frequencies)',
+                        'Pink noise generator or custom audio file upload',
+                        'Adjustable Q factor (0.5-4.0) and gain (3-18dB)',
                         'Boost, cut, and mixed EQ modes',
-                        'Bilingual interface (English/French)',
+                        'Bilingual interface (English/French) with auto-detection',
                         'File history management with IndexedDB',
-                        'Responsive design for all devices'
+                        'Accessibility: toggle visualizer for reduced motion',
+                        'Mobile-responsive neo-brutalist design',
+                        'No signup, no ads, completely free'
                     ]
                 }}
             />
