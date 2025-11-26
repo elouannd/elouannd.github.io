@@ -11,6 +11,7 @@
     "name": "Experiment Z",
     "url": "/experiment-z",
     "description": "An experimental project",
-    "color": "teal"
+    "color": "teal",
+    "hidden": true
   }
 ]
