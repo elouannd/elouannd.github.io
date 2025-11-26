@@ -12,12 +12,5 @@
     "url": "/audio-calculator",
     "description": "Essential calculations for audio engineers",
     "color": "teal"
-  },
-  {
-    "id": "experiment-z",
-    "name": "Experiment Z",
-    "url": "/experiment-z",
-    "description": "An experimental project",
-    "color": "orange"
   }
 ]
