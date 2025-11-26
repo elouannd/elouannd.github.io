@@ -4,27 +4,27 @@
 
   <!-- EQ Ear Trainer App - PRIMARY FOCUS -->
   <url>
-    <loc>https://elouann.me/eq-trainer</loc>
+    <loc>https://elouann.ca/eq-trainer</loc>
     <lastmod>2025-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elouann.me/eq-trainer" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elouann.me/eq-trainer" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://elouann.ca/eq-trainer" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://elouann.ca/eq-trainer" />
   </url>
 
   <!-- Homepage -->
   <url>
-    <loc>https://elouann.me/</loc>
+    <loc>https://elouann.ca/</loc>
     <lastmod>2025-11-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elouann.me/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elouann.me/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://elouann.ca/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://elouann.ca/" />
   </url>
 
   <!-- Apps Directory -->
   <url>
-    <loc>https://elouann.me/apps</loc>
+    <loc>https://elouann.ca/apps</loc>
     <lastmod>2025-11-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -32,7 +32,7 @@
 
   <!-- About Page -->
   <url>
-    <loc>https://elouann.me/about</loc>
+    <loc>https://elouann.ca/about</loc>
     <lastmod>2025-11-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -40,7 +40,7 @@
 
   <!-- Contact Page -->
   <url>
-    <loc>https://elouann.me/contact</loc>
+    <loc>https://elouann.ca/contact</loc>
     <lastmod>2025-11-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>

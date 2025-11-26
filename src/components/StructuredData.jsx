@@ -19,7 +19,7 @@ export default function StructuredData({ type = 'person', data }) {
         '@context': 'https://schema.org',
         '@type': 'Person',
         name: data.name || 'Elouann',
-        url: data.url || 'https://elouann.me',
+        url: data.url || 'https://elouann.ca',
         sameAs: data.sameAs || [],
         jobTitle: data.jobTitle,
         description: data.description,
@@ -42,7 +42,7 @@ export default function StructuredData({ type = 'person', data }) {
         author: {
           '@type': 'Person',
           name: 'Elouann',
-          url: 'https://elouann.me'
+          url: 'https://elouann.ca'
         },
         inLanguage: data.languages || ['en', 'fr'],
         featureList: data.features || []
@@ -52,7 +52,7 @@ export default function StructuredData({ type = 'person', data }) {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: data.name || 'ELOUANN',
-        url: data.url || 'https://elouann.me',
+        url: data.url || 'https://elouann.ca',
         description: data.description,
         author: {
           '@type': 'Person',

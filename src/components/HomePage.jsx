@@ -43,7 +43,7 @@ export default function HomePage() {
         type="website"
         data={{
           name: 'ELOUANN - EQ Ear Trainer',
-          url: 'https://elouann.me',
+          url: 'https://elouann.ca',
           description: 'Free online EQ ear training tool for audio professionals'
         }}
       />
@@ -51,7 +51,7 @@ export default function HomePage() {
         type="person"
         data={{
           name: 'Elouann',
-          url: 'https://elouann.me',
+          url: 'https://elouann.ca',
           email: 'domenech@elouann.ca',
           jobTitle: 'Web Developer',
           description: 'Creator of EQ Ear Trainer and interactive web applications for audio professionals',

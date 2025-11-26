@@ -1,11 +1,11 @@
-# robots.txt for elouann.me
+# robots.txt for elouann.ca
 # Allow all crawlers full access
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://elouann.me/sitemap.xml
+Sitemap: https://elouann.ca/sitemap.xml
 
 # Specific instructions for major search engines
 User-agent: Googlebot

@@ -9,7 +9,7 @@ export default function SEO({
   canonicalPath = ''
 }) {
   const siteName = 'ELOUANN'
-  const siteUrl = 'https://elouann.me'
+  const siteUrl = 'https://elouann.ca'
   const canonicalUrl = `${siteUrl}${canonicalPath}`
 
   useEffect(() => {

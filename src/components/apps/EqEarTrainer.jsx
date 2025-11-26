@@ -838,7 +838,7 @@ export default function EqEarTrainer() {
                 data={{
                     name: 'EQ Ear Trainer',
                     description: 'Free interactive gamified EQ ear training application for audio professionals and enthusiasts. Train your frequency recognition skills with real-time audio processing, reactive audio visualizer, keyboard shortcuts, persistent statistics, and streak-based progression. Perfect for audio engineers, music producers, mixing engineers, and mastering engineers. No signup required.',
-                    url: 'https://elouann.me/eq-trainer',
+                    url: 'https://elouann.ca/eq-trainer',
                     category: 'MultimediaApplication',
                     languages: ['en', 'fr'],
                     features: [
@@ -865,8 +865,8 @@ export default function EqEarTrainer() {
                 type="breadcrumb"
                 data={{
                     items: [
-                        { name: 'Home', url: 'https://elouann.me' },
-                        { name: 'EQ Ear Trainer', url: 'https://elouann.me/eq-trainer' }
+                        { name: 'Home', url: 'https://elouann.ca' },
+                        { name: 'EQ Ear Trainer', url: 'https://elouann.ca/eq-trainer' }
                     ]
                 }}
             />
