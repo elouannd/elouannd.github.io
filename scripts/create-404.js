@@ -15,8 +15,8 @@ const html404 = `<!DOCTYPE html>
   <meta charset="utf-8">
   <title>Redirecting...</title>
   <script>
-    // Store the current path for SPA redirect
-    sessionStorage.redirect = location.href;
+    // Store the current path (not full URL) for SPA redirect
+    sessionStorage.redirect = location.pathname + location.search + location.hash;
   </script>
   <meta http-equiv="refresh" content="0;URL='/'" />
 </head>
