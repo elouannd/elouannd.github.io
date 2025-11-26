@@ -44,7 +44,7 @@ export default function AppsPage() {
 
           {/* Apps Grid with numbered badges - EXTRA playful! */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {appsData.map((app, index) => (
+            {appsData.filter(app => !app.hidden).map((app, index) => (
               <BrandCard
                 key={app.id}
                 colorAccent={app.color}
