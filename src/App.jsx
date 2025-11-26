@@ -5,6 +5,7 @@ import AboutPage from './components/AboutPage'
 import AppsPage from './components/AppsPage'
 import ContactPage from './components/ContactPage'
 import EqEarTrainer from './components/apps/EqEarTrainer'
+import AudioCalculator from './components/apps/AudioCalculator'
 
 function App() {
   return (
@@ -15,8 +16,8 @@ function App() {
         <Route path="/apps" element={<AppsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/eq-trainer" element={<EqEarTrainer />} />
+        <Route path="/audio-calculator" element={<AudioCalculator />} />
         {/* Future app routes will go here */}
-        <Route path="/app1" element={<div className="min-h-screen flex items-center justify-center text-white text-2xl">App 1 Coming Soon</div>} />
         <Route path="/experiment-z" element={<div className="min-h-screen flex items-center justify-center text-white text-2xl">Experiment Z Coming Soon</div>} />
       </Routes>
     </BrowserRouter>

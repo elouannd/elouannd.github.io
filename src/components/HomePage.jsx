@@ -4,6 +4,7 @@ import BrandCard from './BrandCard'
 import MixedTypography from './MixedTypography'
 import SEO from './SEO'
 import StructuredData from './StructuredData'
+import appsData from '../apps.json'
 
 export default function HomePage() {
   const navigate = useNavigate()
@@ -18,13 +19,13 @@ export default function HomePage() {
 
   const t = {
     en: {
-      subtitle: 'Free EQ Ear Training',
+      subtitle: 'Audio Tools & Interactive Apps',
       title: 'EQ Ear Trainer',
       description: 'Train your ears to recognize EQ frequencies like a pro.',
       cta: 'Start Training →'
     },
     fr: {
-      subtitle: 'Entraînement EQ Gratuit',
+      subtitle: 'Outils Audio & Apps Interactives',
       title: 'EQ Ear Trainer',
       description: 'Entraînez vos oreilles à reconnaître les fréquences EQ comme un pro.',
       cta: 'Commencer →'
@@ -88,32 +89,31 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Single Card - EQ Trainer with Layered Effect */}
-          <div className="relative max-w-2xl w-full">
-            {/* Shadow layer behind card */}
-            <div className="absolute inset-0 bg-brand-orange/10 border-4 border-black/20 translate-x-4 translate-y-4 blur-sm -z-10" />
+          {/* App Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl px-4">
+            {appsData.map((app, index) => (
+              <div key={app.id} className="relative">
+                {/* Shadow layer behind card */}
+                <div className={`absolute inset-0 bg-brand-${app.color}/10 border-4 border-black/20 translate-x-4 translate-y-4 blur-sm -z-10`} />
 
-            {/* Main card */}
-            <BrandCard
-              colorAccent="orange"
-              hoverable
-              cornerAccent={true}
-              glassVariant="thick"
-              shadowVariant="layered"
-              onClick={() => navigate('/eq-trainer')}
-            >
-              <h2 className="text-4xl font-black uppercase mb-6">
-                {t.title}
-              </h2>
-              <p className="text-xl font-serif italic mb-8 text-black/80">
-                {t.description}
-              </p>
-              <div className="text-center">
-                <span className="text-2xl font-black uppercase tracking-wider">
-                  {t.cta}
-                </span>
+                {/* Main card */}
+                <BrandCard
+                  colorAccent={app.color}
+                  hoverable
+                  cornerAccent={true}
+                  glassVariant="thick"
+                  shadowVariant="layered"
+                  onClick={() => navigate(app.url)}
+                >
+                  <h2 className="text-3xl sm:text-4xl font-black uppercase mb-4">
+                    {app.name}
+                  </h2>
+                  <p className="text-lg sm:text-xl font-serif italic text-black/80">
+                    {app.description}
+                  </p>
+                </BrandCard>
               </div>
-            </BrandCard>
+            ))}
           </div>
         </div>
 
