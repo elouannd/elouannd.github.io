@@ -10,6 +10,11 @@ Sitemap: https://elouann.ca/sitemap.xml
 # Specific instructions for major search engines
 User-agent: Googlebot
 Allow: /
+Allow: /apps
+Allow: /eq-trainer
+Allow: /audio-calculator
+Allow: /about
+Allow: /contact
 
 User-agent: Bingbot
 Allow: /
@@ -32,6 +37,3 @@ Allow: /
 
 User-agent: Claude-Web
 Allow: /
-
-# Crawl delay (be nice to server)
-Crawl-delay: 1
