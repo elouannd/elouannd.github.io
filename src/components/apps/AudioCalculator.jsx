@@ -2,6 +2,20 @@ import React, { useState, useEffect } from 'react';
 import BrandCard from '../BrandCard';
 import BrandButton from '../BrandButton';
 
+// Small Ad Component
+const AdBanner = () => (
+    <div className="my-6 flex justify-center">
+        <ins 
+            className="adsbygoogle"
+            style={{ display: 'block', minHeight: '90px' }}
+            data-ad-client="ca-pub-2369771525705184"
+            data-ad-slot="auto"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+        />
+    </div>
+);
+
 const translations = {
     en: {
         title: 'Audio Calc',
@@ -183,6 +197,15 @@ const AudioCalculator = () => {
         }
     }, []);
 
+    // Initialize AdSense ads
+    useEffect(() => {
+        try {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+            console.log('AdSense error:', e);
+        }
+    }, []);
+
     const t = translations[language];
 
     const handleCategorySelect = (id) => {
@@ -304,6 +327,9 @@ const AudioCalculator = () => {
                     <a href="mailto:contact@elouann.com" className="inline-block mt-2 text-brand-teal font-bold hover:underline hover:text-brand-orange transition-colors">
                         contact@elouann.com
                     </a>
+                    
+                    {/* Ad Space */}
+                    <AdBanner />
                 </footer>
             </div>
         </div>
