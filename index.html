@@ -48,19 +48,6 @@
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2369771525705184"
      crossorigin="anonymous"></script>
-
-    <!-- SPA redirect script for GitHub Pages -->
-    <script>
-      // Single Page App redirect handler for GitHub Pages
-      // This works with the 404.html to enable client-side routing
-      (function(){
-        var redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        if (redirect && redirect !== location.pathname && redirect !== '/') {
-          history.replaceState(null, null, redirect);
-        }
-      })();
-    </script>
   </head>
   <body>
     <div id="root">

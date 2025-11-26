@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -8,26 +8,30 @@ const distPath = join(__dirname, '..', 'dist');
 // Read index.html
 const indexHtml = readFileSync(join(distPath, 'index.html'), 'utf-8');
 
-// Create 404.html that's a copy of index.html with redirect script prepended
-// This ensures Google can crawl the full app even on 404 routes
-const html404 = indexHtml.replace(
-  '<script>',
-  `<script>
-    // SPA redirect handler for GitHub Pages
-    (function(){
-      var redirect = sessionStorage.redirect;
-      delete sessionStorage.redirect;
-      if (redirect && redirect !== location.pathname) {
-        history.replaceState(null, null, redirect);
-      }
-      // Store current path for redirect
-      sessionStorage.redirect = location.pathname + location.search + location.hash;
-    })();
-  </script>
-  <script>`
-);
+// All SPA routes that need static HTML files
+const routes = [
+  'apps',
+  'eq-trainer', 
+  'audio-calculator',
+  'about',
+  'contact',
+  'experiment-z'
+];
 
-// Write 404.html
-writeFileSync(join(distPath, '404.html'), html404);
+// Create a directory and index.html for each route
+routes.forEach(route => {
+  const routeDir = join(distPath, route);
+  
+  // Create directory if it doesn't exist
+  if (!existsSync(routeDir)) {
+    mkdirSync(routeDir, { recursive: true });
+  }
+  
+  // Write index.html (same as main index.html)
+  writeFileSync(join(routeDir, 'index.html'), indexHtml);
+});
 
-console.log('✅ Created 404.html with SPA redirect');
+// Also create 404.html as a copy of index.html (fallback for unknown routes)
+writeFileSync(join(distPath, '404.html'), indexHtml);
+
+console.log(`✅ Created static HTML for ${routes.length} routes + 404.html`);
