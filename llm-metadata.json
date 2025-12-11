@@ -1,13 +1,16 @@
 {
   "site": {
-    "name": "EQ Ear Trainer by ELOUANN",
-    "url": "https://elouann.me",
-    "primary_app": "https://elouann.me/eq-trainer",
-    "description": "Free online EQ ear training tool for audio engineers and music producers. Master frequency recognition with interactive gamified learning, reactive audio visualizer, keyboard shortcuts, and persistent progress tracking.",
+    "name": "ELOUANN - Professional Audio Tools",
+    "url": "https://elouann.ca",
+    "primary_app": "https://elouann.ca/eq-trainer",
+    "description": "Free professional audio tools for engineers and producers. Features EQ Ear Trainer for frequency recognition, Audio Calculator with essential engineering calculations, and Loudness War penalty checker for streaming platforms.",
     "type": "web_application",
-    "focus": "audio_training",
-    "languages": ["en", "fr"],
-    "last_updated": "2025-11-25"
+    "focus": "audio_tools",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "last_updated": "2025-11-27"
   },
   "creator": {
     "name": "Elouann",
@@ -87,6 +90,107 @@
         "Learning to hear specific problem frequencies in a mix"
       ],
       "learning_value": "Helps users develop critical listening skills essential for audio engineering, mixing, and mastering. The gamification approach with streaks, milestones, and statistics makes learning frequency recognition engaging and trackable. The keyboard shortcuts enable fast-paced practice sessions for serious learners."
+    },
+    {
+      "id": "audio-calculator",
+      "name": "Audio Calculator",
+      "url": "https://elouann.ca/audio-calculator",
+      "category": "Professional Audio Tool",
+      "description": "Comprehensive collection of essential audio engineering calculators. Convert decibels, calculate wavelengths, estimate file sizes, analyze room modes, and more. All calculations are instant and work offline in the browser.",
+      "target_audience": [
+        "Audio engineers",
+        "Music producers",
+        "Mixing engineers",
+        "Mastering engineers",
+        "Live sound engineers",
+        "Audio students",
+        "Recording engineers",
+        "Broadcast engineers",
+        "Acousticians"
+      ],
+      "key_features": [
+        "Decibel calculator (voltage and power ratios)",
+        "Wavelength and frequency converter with temperature compensation",
+        "Note pitch calculator for musical frequencies",
+        "BPM to delay time calculator for all note values",
+        "Distance to time alignment calculator for live sound",
+        "Audio file size estimator for various sample rates and bit depths",
+        "Room modes calculator for studio acoustics",
+        "SPL at distance calculator (inverse square law)",
+        "Stereo microphone spacing guide",
+        "Q-Factor to bandwidth converter",
+        "Compressor attack time to frequency calculator",
+        "Ohm's Law calculator for power calculations",
+        "Bilingual interface (English/French)",
+        "Neo-brutalist design with organized categories",
+        "Fully responsive for mobile and desktop"
+      ],
+      "technologies": [
+        "React 18",
+        "Tailwind CSS",
+        "Real-time calculations",
+        "Responsive design"
+      ],
+      "use_cases": [
+        "Converting voltage ratios to dB for signal levels",
+        "Calculating wavelengths for room treatment planning",
+        "Estimating storage requirements for recording sessions",
+        "Finding room resonances for acoustic treatment",
+        "Calculating delay times for time-based effects",
+        "Determining SPL drop-off for speaker placement",
+        "Setting compressor attack times musically",
+        "Planning microphone placement for stereo recording",
+        "Quick reference for common audio calculations"
+      ],
+      "learning_value": "Provides instant access to essential audio engineering calculations without needing to memorize formulas. Helps engineers make informed decisions about acoustics, signal processing, and recording workflows."
+    },
+    {
+      "id": "loudness-war",
+      "name": "Loudness War",
+      "url": "https://elouann.ca/loudness-war",
+      "category": "Audio Analysis Tool",
+      "description": "Streaming penalty checker for audio masters. Analyze how your track will be normalized by Spotify, Apple Music, YouTube, and other streaming platforms. Hear the penalty in real-time and understand LUFS targets.",
+      "target_audience": [
+        "Mastering engineers",
+        "Music producers",
+        "Mixing engineers",
+        "Audio students",
+        "Musicians preparing releases",
+        "Recording engineers",
+        "Podcast producers"
+      ],
+      "key_features": [
+        "Real-time LUFS and True Peak analysis",
+        "Streaming penalty calculator for 8 major platforms",
+        "A/B comparison between original and normalized audio",
+        "Interactive waveform with click-to-seek",
+        "Playback loop for extended listening",
+        "Visual penalty indicator overlay",
+        "Support for WAV, MP3, AIFF, and other formats",
+        "Platform selection (Spotify, Apple Music, YouTube, Tidal, Amazon, Deezer, Pandora, SoundCloud)",
+        "Bilingual interface (English/French)",
+        "Dark mode optimized design",
+        "Drag-and-drop file upload"
+      ],
+      "technologies": [
+        "React 18",
+        "Web Audio API",
+        "Canvas API for waveform rendering",
+        "K-weighting filters for LUFS calculation",
+        "Real-time audio processing",
+        "OfflineAudioContext for analysis"
+      ],
+      "use_cases": [
+        "Checking if your master will be turned down by streaming platforms",
+        "Understanding loudness normalization penalties",
+        "Comparing masters at different loudness levels",
+        "Learning proper LUFS targets for streaming",
+        "Avoiding over-compression and limiting",
+        "Optimizing masters for specific platforms",
+        "Educational tool for understanding the loudness war",
+        "A/B testing different master versions"
+      ],
+      "learning_value": "Educates users about streaming loudness normalization and helps them avoid the loudness war trap. Demonstrates the real-world impact of targeting different LUFS levels and encourages dynamic range preservation."
     }
   ],
   "design_system": {

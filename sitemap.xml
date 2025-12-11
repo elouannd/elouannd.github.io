@@ -5,7 +5,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://elouann.ca/</loc>
-    <lastmod>2025-11-26</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -13,7 +13,7 @@
   <!-- EQ Ear Trainer App -->
   <url>
     <loc>https://elouann.ca/eq-trainer/</loc>
-    <lastmod>2025-11-26</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -21,7 +21,15 @@
   <!-- Audio Calculator App -->
   <url>
     <loc>https://elouann.ca/audio-calculator/</loc>
-    <lastmod>2025-11-26</lastmod>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Loudness War App -->
+  <url>
+    <loc>https://elouann.ca/loudness-war/</loc>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -29,7 +37,7 @@
   <!-- Apps Directory -->
   <url>
     <loc>https://elouann.ca/apps/</loc>
-    <lastmod>2025-11-26</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -37,7 +45,7 @@
   <!-- About Page -->
   <url>
     <loc>https://elouann.ca/about/</loc>
-    <lastmod>2025-11-26</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -45,7 +53,7 @@
   <!-- Contact Page -->
   <url>
     <loc>https://elouann.ca/contact/</loc>
-    <lastmod>2025-11-26</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
